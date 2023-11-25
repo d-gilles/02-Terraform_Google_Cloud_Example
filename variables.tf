@@ -4,7 +4,7 @@ locals {
 
 variable "project" {
   description = "datatalksclub-data_engineering_zoomcamp"
-  default = "taxi-rides-ny1"
+  default = "dtc-zc"
   type = string
 }
 
@@ -30,10 +30,4 @@ variable "BQ_DATASET" {
   description = "BigQuery Dataset that raw data (from GCS) will be written to"
   type = string
   default = "nytaxi"
-}
-variable "credentials" {
-  description = "path to credential.json"
-  type = string
-  default = "/home/david/.google/credentials/google_credentials.json"
-
 }

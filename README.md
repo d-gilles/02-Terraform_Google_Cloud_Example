@@ -2,8 +2,6 @@
 
 This repository contains Terraform configuration files to create a simple infrastructure on Google Cloud Platform (GCP) to host a Datapipeline. The infrastructure includes a Google Cloud Storage bucket and a BigQuery dataset, as well as a service account with read access to the BigQuery dataset.
 
-### Notes on Terraform
-* [Terraform_overview](https://github.com/d-gilles/My-Notebooks/blob/main/Terraform.md)
 
 
 ## Prerequisites
@@ -31,7 +29,13 @@ This repository contains Terraform configuration files to create a simple infras
   $env:GOOGLE_APPLICATION_CREDENTIALS="C:\path\to\your-service-account-key.json"
   ```
 
-Replace `/path/to/your-service-account-key.json` or `C:\path\to\your-service-account-key.json` with the actual path to the JSON key file of your Service Account.
+  or use the `.env` file to define this environment variable.
+  Run:
+  ```
+  mv .env.example .env
+  ```
+  and change the path in the file.
+
 
 3. Initialize the Terraform working directory:
 ```sh
@@ -42,26 +46,31 @@ terraform init
 ```sh
 variable "project" {
 description = "The ID of the Google Cloud project"
+default = "<ID here>"
 type = string
 }
 
 variable "region" {
 description = "The region in which to create the resources"
+default = "europe-west3"
 type = string
 }
 
 variable "bucket_name" {
 description = "The name of the Google Cloud Storage bucket"
+default = "<bucket name here>"
 type = string
 }
 
 variable "storage_class" {
 description = "The storage class for the Google Cloud Storage bucket"
+default = "STANDARD"
 type = string
 }
 
 variable "BQ_DATASET" {
 description = "The ID of the BigQuery dataset"
+default = "<name here>"
 type = string
 }
 ```
